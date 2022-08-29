@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 //   });
 app.use("/posts", controllers.post);
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Please send a valid request.");
 });
 
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
