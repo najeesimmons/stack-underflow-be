@@ -12,13 +12,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use((req, res, next) => {
-//     console.log(`${req.method} ${req.originalUrl}`);
-//     next();
-//   });
-app.use("/posts", controllers.post);
 app.get("/", (req, res) => {
   res.send("Please send a valid request.");
 });
+app.use("/posts", controllers.post);
+
 
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
