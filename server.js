@@ -1,5 +1,5 @@
 require("dotenv").config();
-const controllers = require("./controllers");
+const postRoutes = require("./routes/post")
 const { PORT = 4000 } = process.env;
 const cors = require("cors");
 const morgan = require("morgan");
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.send("Please send a valid request.");
 });
-app.use("/posts", controllers.post);
+app.use("/posts", postRoutes);
 
 
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
