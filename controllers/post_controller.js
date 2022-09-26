@@ -4,7 +4,7 @@ const { Post } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
-    res.json(await Post.find({}));
+    res.json(await Post.find({}).sort({ createdAt: -1 }));
   } catch (error) {
     res.status(400).json(error);
   }
