@@ -18,10 +18,28 @@ const getPost = async (req, res) => {
 };
 
 const createPost = async (req, res) => {
+  const { title, body, image } = req.body;
+  let emptyfields = [];
+
+  if (!title) {
+    emptyfields.push("title");
+  }
+  if (!body) {
+    emptyfields.push("body");
+  }
+  if (!image) {
+    emptyfields.push("image");
+  }
+  if (emptyfields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Please fill in all fields", emptyfields });
+  }
   try {
-    res.json(await Post.create(req.body));
+    const post = await Post.create({ title, body, image });
+    res.status(200).json(post);
   } catch (error) {
-    res.status(400).json(error);
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -48,5 +66,5 @@ module.exports = {
   getPosts,
   createPost,
   deletePost,
-  updatePost
-}
+  updatePost,
+};
