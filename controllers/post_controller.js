@@ -19,21 +19,21 @@ const getPost = async (req, res) => {
 
 const createPost = async (req, res) => {
   const { title, body, image } = req.body;
-  let emptyfields = [];
+  let emptyFields = [];
 
   if (!title) {
-    emptyfields.push("title");
+    emptyFields.push("title");
   }
   if (!body) {
-    emptyfields.push("body");
+    emptyFields.push("body");
   }
   if (!image) {
-    emptyfields.push("image");
+    emptyFields.push("image");
   }
-  if (emptyfields.length > 0) {
+  if (emptyFields.length > 0) {
     return res
       .status(400)
-      .json({ error: "Please fill in all fields", emptyfields });
+      .json({ error: "Please fill in all fields", emptyFields });
   }
   try {
     const post = await Post.create({ title, body, image });

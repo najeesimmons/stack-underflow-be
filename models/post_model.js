@@ -2,19 +2,18 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema(
-  {
+const postSchema = new Schema({
   title: {
     type: String,
-    required: [true, "you must enter a title"],
+    required: true,
   },
   body: {
     type: String,
-    required: [true, "copy and paste your issue"],
+    required: true,
   },
   image: {
     type: String,
-    required: [true, "you must provide a screenshot of your issue"],
+    required: true,
   },
   publishDate: { type: Date, default: Date.now },
   comments: [
