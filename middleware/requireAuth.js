@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user_model");
 
 const requireAuth = async (req, res, next) => {
-  const { authorization } = req.body;
+  const { authorization } = req.headers;
 
   if (!authorization) {
     res.status(401).json({ error: "Authorization token required" });
