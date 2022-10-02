@@ -12,12 +12,11 @@ const requireAuth = require("../middleware/requireAuth");
 
 const router = express.Router();
 
-router.use(requireAuth);
+// router.use(requireAuth);
 
 router.get("/", getPosts);
 router.get("/:id", getPost);
-router.post("/", createPost);
-router.delete("/:id", deletePost);
-router.patch("/:id", deletePost);
+router.post("/", requireAuth, createPost);
+router.delete("/:id", requireAuth, deletePost);
 
 module.exports = router;
