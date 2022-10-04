@@ -35,7 +35,8 @@ const createPost = async (req, res) => {
       .json({ error: "Please fill in all fields", emptyFields });
   }
   try {
-    const post = await Post.create({ title, body, image });
+    const user_id = req.user._id;
+    const post = await Post.create({ title, body, image, user_id });
     res.status(200).json(post);
   } catch (error) {
     res.status(400).json({ error: error.message });
