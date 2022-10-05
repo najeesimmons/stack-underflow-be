@@ -43,6 +43,7 @@ const createPost = async (req, res) => {
 const deletePost = async (req, res) => {
   //verify whether owner of post is user making request
   // if (req.params.id !== user_id) return
+  // is this necessary?
   try {
     res.json(await Post.findByIdAndRemove(req.params.id));
   } catch (error) {
