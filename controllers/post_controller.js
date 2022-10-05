@@ -17,7 +17,7 @@ const getPost = async (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  const { title, body, image } = req.body;
+  const { title, body } = req.body;
   let emptyFields = [];
 
   if (!title) {
@@ -25,9 +25,6 @@ const createPost = async (req, res) => {
   }
   if (!body) {
     emptyFields.push("body");
-  }
-  if (!image) {
-    emptyFields.push("image");
   }
   if (emptyFields.length > 0) {
     return res
