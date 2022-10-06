@@ -16,12 +16,6 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-    comments: [
-      {
-        type: String,
-        publishDate: { type: Date, default: Date.now },
-      },
-    ],
   },
   { timestamps: true }
 );
