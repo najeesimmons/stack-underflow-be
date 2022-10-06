@@ -41,10 +41,15 @@ const createPost = async (req, res) => {
 };
 
 const deletePost = async (req, res) => {
-  //verify whether owner of post is user making request
-  // if (req.params.id !== user_id) return
-  // is this necessary?
+  const { user } = req;
+
   try {
+    const postObj = await Post.findById(req.params.id);
+    console.log(postObj)
+    if (postObj.user_id !== user._id) {
+      console.log("NOT AUTHORIZED TO DELETE");
+      return res.status(403).json({message: "unauthorized"})
+    }
     res.json(await Post.findByIdAndRemove(req.params.id));
   } catch (error) {
     res.status(400).json(error);
