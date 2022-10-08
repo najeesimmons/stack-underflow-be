@@ -18,5 +18,6 @@ router.get("/", getPosts);
 router.get("/:id", getPost);
 router.post("/", requireAuth, createPost);
 router.delete("/:id", requireAuth, deletePost);
+router.put("/:id", requireAuth, updatePost);
 
 module.exports = router;
