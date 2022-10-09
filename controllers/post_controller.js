@@ -45,10 +45,10 @@ const deletePost = async (req, res) => {
 
   try {
     const postObj = await Post.findById(req.params.id);
-    console.log(postObj)
+    console.log(postObj);
     if (postObj.user_id !== user._id) {
       console.log("NOT AUTHORIZED TO DELETE");
-      return res.status(403).json({message: "unauthorized"})
+      return res.status(403).json({ message: "unauthorized" });
     }
     res.json(await Post.findByIdAndRemove(req.params.id));
   } catch (error) {
